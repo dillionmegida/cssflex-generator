@@ -1,0 +1,10 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Nunito Sans Light';
+  background-color: #1b0e38;
+}
+
+* {
+  box-sizing: border-box;
+}
