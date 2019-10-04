@@ -1,25 +1,58 @@
 import React from 'react';
 import './App.css';
 
-import { AppTitle } from './components/AppDetails/AppDetails';
+import { AppTitle, Creator } from './components/AppDetails/AppDetails';
+import Controls from './components/Controls/Control';
+
+
+// Sample Div used to illustrate children
+const SampleDiv = props => (
+  <div style={{backgroundColor: 'lightblue', margin: '20px', height: props.divsHeight, width: props.divsWidth}}>
+          
+  </div>
+);
+
+// Function for repeating components
+const repeatComp = (comp, number) => {
+  let CompArr = [];
+  for(let count = 1; count <= number; count++) {
+    CompArr.push(comp);
+  }
+  // console.log(ComDisplay);
+  return CompArr.map((comp, index) => (
+    <React.Fragment key={index}>
+      { comp }
+    </React.Fragment>
+  ))
+}
 
 class App extends React.Component {
 
   state = {
-    nDivs: 3,
+    //Number of Divs
+    nDivs: 7,
     // Handling the state of the styles
-    divsWidth: '200px',
-    divsHeight: '170px',
-    flexWrap: 'wrap',
+    divsWidth: '100px',
+    divsHeight: '100px',
+    flexWrap: 'nowrap',
     flexDirection: 'row',
     justifyContent: 'flex-start',
     alignItems: 'flex-start'
   }
 
 
+   //Adding More Divs 
+
+  addDiv = () => {
+    let initialN = this.state.nDivs;
+    this.setState({
+      nDivs: initialN + 1
+    })
+  }
+
   // Functions that get user inputs and change state
 
-  changeDivWidth = event => {
+  changeDivsWidth = event => {
     let currentValue = event.target.value;
     // console.log(currentValue);
     this.setState({
@@ -32,6 +65,13 @@ class App extends React.Component {
     // console.log(currentValue);
     this.setState({
       divsHeight: currentValue + 'px'
+    })
+  }
+
+  changeFlexWrap = event => {
+    let currentValue = event.target.value;
+    this.setState({
+      flexWrap: currentValue
     })
   }
 
@@ -60,7 +100,11 @@ class App extends React.Component {
   render() {
     return (
       <main className='Main'>
-        <h1 className='AppTitle'>{ AppTitle }</h1>
+        <div className='AppInfo'>
+            <h1 className='AppTitle'>{ AppTitle }</h1>
+            <p>Built by <a className='creator' href='https://twitter.com/iamdillion' title='Creator'>{ Creator }</a></p>
+            <p><a className='contribute' href='https://github.com/dillionmegida/cssflex-generator' title='GitHub Repository'>Contribute to this project</a></p>
+        </div>
         <section
           className='FlexContainer'
           style={{
@@ -71,65 +115,24 @@ class App extends React.Component {
             alignItems: this.state.alignItems
           }}
         >
-          <div style={{backgroundColor: 'lightblue', margin: '20px', height: this.state.divsHeight, width: this.state.divsWidth}}>
-          
-          </div>
 
-          <div style={{backgroundColor: 'lightblue', margin: '20px', height: this.state.divsHeight, width: this.state.divsWidth}}>
-          
-          </div>
-
-          <div style={{backgroundColor: 'lightblue', margin: '20px', height: this.state.divsHeight, width: this.state.divsWidth}}>
-          
-          </div>
+          {
+            repeatComp(
+               <SampleDiv divsHeight={this.state.divsHeight} divsWidth={this.state.divsWidth} />,
+               this.state.nDivs
+            )
+          }
 
         </section>
-        <section className='Controls'>
-          <button className='AddDivBtn'>Add div</button>
-
-          <div>
-            <label>Height of divs</label>
-            <input onChange={this.changeDivsHeight} type='number' />
-          </div>
-
-          <div>
-            <label>Width of divs</label>
-            <input onChange={this.changeDivWidth} type='number' />
-          </div>
-
-          <div>
-            <label>Flex Direction</label>
-            <select onChange={this.changeFlexDirection}>
-              <option>row</option>
-              <option>column</option>
-              <option>row-reverse</option>
-              <option>column-reverse</option>
-            </select>
-          </div>
-
-          <div>
-            <label>justify-content</label>
-            <select onChange={this.changeJustifyContent}>
-              <option>flex-start</option>
-              <option>flex-end</option>
-              <option>center</option>
-              <option>space-evenly</option>
-              <option>space-around</option>
-              <option>space-between</option>
-            </select>
-          </div>
-
-          <div>
-            <label>align-items</label>
-            <select onChange={this.changeAlignItems}>
-              <option>flex-start</option>
-              <option>flex-end</option>
-              <option>center</option>
-              <option>stretch</option>
-              <option>baseline</option>
-            </select>
-          </div>
-        </section>
+        <Controls
+          addDiv = {this.addDiv}
+          changeDivsWidth = {this.changeDivsWidth}
+          changeDivsHeight = {this.changeDivsHeight}
+          changeFlexWrap = {this.changeFlexWrap}
+          changeFlexDirection = {this.changeFlexDirection}
+          changeJustifyContent = {this.changeJustifyContent}
+          changeAlignItems = {this.changeAlignItems}
+        />
       </main>
     )
   }

@@ -1,14 +1,27 @@
 .Main {
-  width: 100vw; 
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-evenly;
+  justify-content: center;
 }
-
+.AppInfo {
+  width: 100%;
+  text-align: center;   
+  margin: 10px 0;
+}
+.AppInfo p {
+  font-size: 17px;
+  color: white;
+  margin: 5px 0;
+}
+.AppInfo .creator {
+  color: orange;
+}
+.AppInfo .contribute {
+  color: lightcoral;
+}
 .AppTitle {
   color: white;
-  text-align: center;
-  width: 100%;
+  margin: 4px 0;
 }
 
 .FlexContainer {
@@ -19,34 +32,14 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  margin: 0 0 50px;
+  margin: 0 30px 30px;
+  height: 80vh;
+  overflow: auto;
 }
-
-/* .FlexContainer > div {
   width: 170px;
   height: 170px;
+
+/* .FlexContainer > div {
   background-color: #dec58e;
   margin: 10px;
 } */
-
-.Controls {
-  width: 300px;
-  background-color: #2f1d58;
-  padding: 10px;
-  display: flex;
-  flex-flow: column;
-  color: white;
-}
-.AddDivBtn, .Controls input, .Controls select {
-  height: 40px;
-  width: 100%;
-  margin: 0 0 10px;
-}
-.AddDivBtn {
-  background-color: lightgreen;
-  cursor: pointer;
-  border: 0;
-}
-.Controls input, .Controls select {
-  padding: 10px;
-}

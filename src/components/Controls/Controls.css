@@ -1,0 +1,37 @@
+
+.Controls {
+  max-width: 300px;
+  min-width: 250px;
+  background-color: #2f1d58;
+  padding: 10px;
+  display: flex;
+  flex-flow: column;
+  color: white;
+  height: 80vh;
+}
+.Controls label {
+  font-size: 15px;
+  letter-spacing: 1px;
+}
+.AddDivBtn, .Controls input, .Controls select {
+  width: 100%;
+  margin: 5px 0 10px;
+}
+.AddDivBtn {
+  background-color: lightgreen;
+  cursor: pointer;
+  border: 0;
+  padding: 10px;
+}
+.Controls input, .Controls select {
+  padding: 5px 10px;
+}
+.GenCode {
+  padding: 10px;
+  background-color: lightgreen;
+  border: 0;
+  cursor: pointer;
+}
+.GenCode:hover {
+  background-color: green;
+}
