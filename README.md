@@ -39,10 +39,9 @@ npm start
 ##### Make your changes
 You could make changes in the project itself or contribute your ideas in the `ideas.md` file. Ideas would be added to the Goals of the project if accepted.
 Ideas should be added in this format:
-- your-name (optional: social media link)
-your-idea
+- your-name (optional: social media link): your-idea
 
-Check [The Idea file](.ideas.md) to see a sample
+Check [The Idea file](ideas.md) to see a sample
 ##### Push to your repository
 ##### Create Pull Request
 ##### Add Upstream
