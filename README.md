@@ -40,5 +40,12 @@ npm start
 You could make changes in the project itself or contribute your ideas in the `ideas.md` file. Ideas would be added to the Goals of the project if accepted.
 ##### Push to your repository
 ##### Create Pull Request
+##### Add Upstream
+```shell
+git remote add upstream https://github.com/dillionmegida/cssflex-generator.git
+```
+Make this repository an upstream for easy syncing and follow up.
 
-**PS:** You can also contribute by adding to this documentation : )
+-----
+
+**PS:** You can also contribute by editing or adding to this documentation : )
