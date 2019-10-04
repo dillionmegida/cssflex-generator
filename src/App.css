@@ -46,3 +46,9 @@
     width: 90%;
   }
 }
+
+@media only screen and (max-height: 500px) {
+  .FlexContainer {
+    height: auto;
+  }
+}
