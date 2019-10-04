@@ -7,8 +7,7 @@
 
 .AppTitle {
   color: white;
-  text-align: left;
-  margin-left: 100px;
+  text-align: center;
   width: 100%;
 }
 
@@ -20,6 +19,7 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+  margin: 0 0 50px;
 }
 
 /* .FlexContainer > div {
@@ -30,7 +30,7 @@
 } */
 
 .Controls {
-  width: 20vw;
+  width: 300px;
   background-color: #2f1d58;
   padding: 10px;
   display: flex;
