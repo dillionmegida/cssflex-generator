@@ -1,13 +1,14 @@
 
 .Controls {
-  max-width: 300px;
-  min-width: 250px;
+  width: 30%;
   background-color: #2f1d58;
   padding: 10px;
   display: flex;
   flex-flow: column;
   color: white;
   height: 80vh;
+  border: 1px solid white;
+  margin: 0 0 30px;
 }
 .Controls label {
   font-size: 15px;
@@ -24,7 +25,7 @@
   padding: 10px;
 }
 .Controls input, .Controls select {
-  padding: 5px 10px;
+  padding: 10px 10px;
 }
 .GenCode {
   padding: 10px;
@@ -34,4 +35,10 @@
 }
 .GenCode:hover {
   background-color: green;
+}
+
+@media only screen and (max-width: 550px) {
+  .Controls {
+    width: 90%;
+  }
 }

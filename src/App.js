@@ -30,7 +30,7 @@ class App extends React.Component {
 
   state = {
     //Number of Divs
-    nDivs: 7,
+    nDivs: 3,
     // Handling the state of the styles
     divsWidth: '100px',
     divsHeight: '100px',

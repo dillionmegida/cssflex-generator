@@ -57,9 +57,12 @@ let Controls = props => {
               <option>baseline</option>
             </select>
           </div>
-          <button className='GenCode'>
+          {/*
+            Not enabled yet
+            <button className='GenCode'>
           	Generate Code
           </button>
+            */ }
         </section>
 	)
 }
