@@ -9,15 +9,15 @@ let Controls = (props) => {
 			</button>
 			<div>
 				<label>Height of divs (px)</label>
-				<input onChange={props.changeDivsHeight} type="number" />
+				<input value={props.DivsHeight} onChange={props.changeDivsHeight} type="number" />
 			</div>
 			<div>
 				<label>Width of divs (px)</label>
-				<input onChange={props.changeDivsWidth} type="number" />
+				<input value={props.DivsWidth} onChange={props.changeDivsWidth} type="number" />
 			</div>
 			<div>
 				<label>Margin of divs (px)</label>
-				<input onChange={props.changeDivsMargin} type="number" />
+				<input value={props.DivsMargin} onChange={props.changeDivsMargin} type="number" />
 			</div>
 			<div>
 				<label>flex-wrap</label>

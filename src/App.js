@@ -145,6 +145,11 @@ class App extends React.Component {
         </section>
         <Controls
           addDiv = {this.addDiv}
+          
+          DivsHeight = {this.state.divsHeight.slice(0, -2)}
+          DivsWidth = {this.state.divsWidth.slice(0, -2)}
+          DivsMargin = {this.state.divsMargin.slice(0, -2)}
+
           changeDivsWidth = {this.changeDivsWidth}
           changeDivsHeight = {this.changeDivsHeight}
           changeDivsMargin = {this.changeDivsMargin}
