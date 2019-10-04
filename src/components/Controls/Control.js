@@ -16,6 +16,10 @@ let Controls = (props) => {
 				<input onChange={props.changeDivsWidth} type="number" />
 			</div>
 			<div>
+				<label>Margin of divs (px)</label>
+				<input onChange={props.changeDivsMargin} type="number" />
+			</div>
+			<div>
 				<label>flex-wrap</label>
 				<select onChange={props.changeFlexWrap}>
 					<option>nowrap</option>
@@ -46,6 +50,16 @@ let Controls = (props) => {
 			<div>
 				<label>align-items</label>
 				<select onChange={props.changeAlignItems}>
+					<option>flex-start</option>
+					<option>flex-end</option>
+					<option>center</option>
+					<option>stretch</option>
+					<option>baseline</option>
+				</select>
+			</div>
+			<div>
+				<label>align-content</label>
+				<select onChange={props.changeAlignContent}>
 					<option>flex-start</option>
 					<option>flex-end</option>
 					<option>center</option>

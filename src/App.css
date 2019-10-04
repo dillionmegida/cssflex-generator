@@ -28,9 +28,6 @@
   background-color: #2f1d58;
   box-shadow: 1px 1px 10px rgba(0,0,0,0.3);
   border: 1px solid white;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
   margin: 0 10px 30px;
   height: 80vh;
   overflow: auto;

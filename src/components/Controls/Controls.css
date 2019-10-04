@@ -4,15 +4,20 @@
   background-color: #2f1d58;
   padding: 10px;
   display: flex;
-  flex-flow: column;
+  flex-flow: wrap;
+  justify-content: space-evenly;
   color: white;
   height: 80vh;
   border: 1px solid white;
   margin: 0 0 30px;
 }
+.Controls > * {
+  width:50%;
+}
 .Controls label {
   font-size: 15px;
   letter-spacing: 1px;
+  display:block;
 }
 .AddDivBtn, .Controls input, .Controls select {
   width: 100%;
@@ -22,7 +27,8 @@
   background-color: lightgreen;
   cursor: pointer;
   border: 0;
-  padding: 10px;
+  padding: 5px;
+  height: 50px;
 }
 .Controls input, .Controls select {
   padding: 10px 10px;

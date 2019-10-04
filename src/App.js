@@ -7,7 +7,7 @@ import Controls from './components/Controls/Control';
 
 // Sample Div used to illustrate children
 const SampleDiv = props => (
-  <div style={{backgroundColor: 'lightblue', margin: '20px', height: props.divsHeight, width: props.divsWidth}}>
+  <div style={{backgroundColor: 'lightblue', margin: props.margin, height: props.divsHeight, width: props.divsWidth}}>
           
   </div>
 );
@@ -34,10 +34,12 @@ class App extends React.Component {
     // Handling the state of the styles
     divsWidth: '100px',
     divsHeight: '100px',
+    divsMargin: '5px',
     flexWrap: 'nowrap',
     flexDirection: 'row',
     justifyContent: 'flex-start',
-    alignItems: 'flex-start'
+    alignItems: 'flex-start',
+    alignContent: 'flex-start'
   }
 
 
@@ -68,6 +70,15 @@ class App extends React.Component {
     })
   }
 
+  // Change Margin
+  changeDivsMargin = event => {
+    let currentValue = event.target.value;
+    // console.log(currentValue);
+    this.setState({
+      divsMargin: currentValue + 'px'
+    })
+  } 
+
   changeFlexWrap = event => {
     let currentValue = event.target.value;
     this.setState({
@@ -96,6 +107,13 @@ class App extends React.Component {
     })
   }
 
+  changeAlignContent = event => {
+    let currentValue = event.target.value;
+    this.setState({
+      alignContent: currentValue
+    })
+  }
+
 
   render() {
     return (
@@ -112,13 +130,14 @@ class App extends React.Component {
             flexWrap: this.state.flexWrap,
             flexDirection: this.state.flexDirection,
             justifyContent: this.state.justifyContent,
-            alignItems: this.state.alignItems
+            alignItems: this.state.alignItems,
+            alignContent: this.state.alignContent
           }}
         >
 
           {
             repeatComp(
-               <SampleDiv divsHeight={this.state.divsHeight} divsWidth={this.state.divsWidth} />,
+               <SampleDiv divsHeight={this.state.divsHeight} divsWidth={this.state.divsWidth} margin={this.state.divsMargin} />,
                this.state.nDivs
             )
           }
@@ -128,10 +147,12 @@ class App extends React.Component {
           addDiv = {this.addDiv}
           changeDivsWidth = {this.changeDivsWidth}
           changeDivsHeight = {this.changeDivsHeight}
+          changeDivsMargin = {this.changeDivsMargin}
           changeFlexWrap = {this.changeFlexWrap}
           changeFlexDirection = {this.changeFlexDirection}
           changeJustifyContent = {this.changeJustifyContent}
           changeAlignItems = {this.changeAlignItems}
+          changeAlignContent = {this.changeAlignContent}
         />
       </main>
     )
