@@ -30,6 +30,15 @@
   padding: 5px;
   height: 50px;
 }
+.DelDivBtn {
+  background-color: lightcoral;
+  cursor: pointer;
+  border: 0;
+  padding: 5px;
+  height: 50px;
+  width: 100%;
+  margin: 5px 0 10px;
+}
 .Controls input, .Controls select {
   padding: 10px 10px;
 }

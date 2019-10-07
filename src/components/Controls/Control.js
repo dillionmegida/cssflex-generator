@@ -7,6 +7,9 @@ let Controls = (props) => {
 			<button onClick={props.addDiv} className="AddDivBtn">
 				Add div
 			</button>
+			<button onClick={props.delDiv} className="DelDivBtn">
+				Del div
+			</button>
 			<div>
 				<label>Height of divs (px)</label>
 				<input value={props.DivsHeight} onChange={props.changeDivsHeight} type="number" />

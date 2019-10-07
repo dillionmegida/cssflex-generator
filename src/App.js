@@ -52,6 +52,16 @@ class App extends React.Component {
     })
   }
 
+  // delete divs
+  delDiv = () => {
+    let initialN = this.state.nDivs;
+    if (initialN > 1) {
+      this.setState({
+        nDivs: initialN - 1
+      });
+    }
+  }
+
   // Functions that get user inputs and change state
 
   changeDivsWidth = event => {
@@ -145,6 +155,7 @@ class App extends React.Component {
         </section>
         <Controls
           addDiv = {this.addDiv}
+          delDiv = {this.delDiv}
           
           DivsHeight = {this.state.divsHeight.slice(0, -2)}
           DivsWidth = {this.state.divsWidth.slice(0, -2)}
