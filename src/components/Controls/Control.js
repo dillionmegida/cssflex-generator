@@ -69,13 +69,11 @@ let Controls = (props) => {
 					<option>stretch</option>
 					<option>baseline</option>
 				</select>
-			</div>
-			{/*
-            Not enabled yet
-            <button className='GenCode'>
-          	Generate Code
-          </button>
-            */}
+			</div>			
+            <button onClick={props.genCodeBtnclicked} className='GenCode'>
+				Generate Code
+			</button>
+           
 		</section>
 	);
 };

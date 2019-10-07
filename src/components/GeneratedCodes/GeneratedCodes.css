@@ -1,0 +1,36 @@
+.Modal {
+    width: 100%;
+    position: absolute;
+    padding: 20px 0;
+    background-color: #2f1d58;
+}
+.Modal button {
+    position: fixed;
+    background-color: red;
+    border: 0;
+    padding: 10px;
+    top: 0; 
+    color: white;
+    cursor: pointer;
+    left: 45%;
+}
+.Modal button:hover {
+    border: 2px solid red;
+    background-color: black;
+}
+.HtmlCodes, .CssCodes {
+    width: 60%;
+    background-color: pink;
+    padding: 10px;
+    margin: 10px auto;
+}
+.HtmlCodes p, .CssCodes p {
+    font-size: 15px;
+    font-family: monospace;
+}
+
+@media only screen and (max-width: 700px) {
+    .HtmlCodes, .CssCodes {
+        width: 90%;
+    }
+}

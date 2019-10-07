@@ -4,6 +4,8 @@ import './App.css';
 import { AppTitle, Creator } from './components/AppDetails/AppDetails';
 import Controls from './components/Controls/Control';
 
+import Modal, { CssCodes } from './components/GeneratedCodes/GeneratedCodes';
+
 
 // Sample Div used to illustrate children
 const SampleDiv = props => (
@@ -39,25 +41,37 @@ class App extends React.Component {
     flexDirection: 'row',
     justifyContent: 'flex-start',
     alignItems: 'flex-start',
-    alignContent: 'flex-start'
+    alignContent: 'flex-start',
+
+    htmlArr: [
+      '<div></div>',
+			'<div></div>',
+			'<div></div>'
+    ],
+
+    codeModal: false
   }
-
-
    //Adding More Divs 
 
   addDiv = () => {
     let initialN = this.state.nDivs;
+    let initialHtmlArr = this.state.htmlArr;
+    initialHtmlArr.push('<div></div>')
     this.setState({
-      nDivs: initialN + 1
+      nDivs: initialN + 1,
+      htmlArr: initialHtmlArr
     })
   }
 
   // delete divs
   delDiv = () => {
     let initialN = this.state.nDivs;
+    let initialHtmlArr = this.state.htmlArr;
     if (initialN > 1) {
+      initialHtmlArr.pop();
       this.setState({
-        nDivs: initialN - 1
+        nDivs: initialN - 1,
+        htmlArr: initialHtmlArr
       });
     }
   }
@@ -66,7 +80,6 @@ class App extends React.Component {
 
   changeDivsWidth = event => {
     let currentValue = event.target.value;
-    // console.log(currentValue);
     this.setState({
       divsWidth: currentValue + 'px'
     })
@@ -124,10 +137,50 @@ class App extends React.Component {
     })
   }
 
+  showCodeModal = () => {
+    this.setState({
+      codeModal: true
+    })
+  }
+
+  closeCodeModal = () => {
+    this.setState({
+      codeModal: false
+    })
+  }
 
   render() {
+
+    const cssParentArr = [
+      'display: flex',
+      `flex-wrap: ${this.state.flexWrap}`,
+      `justify-content: ${this.state.justifyContent}`,
+      `align-items: ${this.state.alignItems}`,
+      `align-content: ${this.state.alignContent}`,
+      'width: 65%',
+      'background-color: #2f1d58',
+      'height: 80vh',
+      'overflow: auto',
+      `flex-direction: ${this.state.flexDirection}`
+      
+    ]
+  
+    const childrenArr = [
+      `width: ${this.state.divsWidth}`,
+      `height: ${this.state.divsHeight}`,
+      `margin: ${this.state.divsMargin}`,
+      'background-color: lightblue'
+    ]
+    
     return (
       <main className='Main'>
+        {this.state.codeModal ? 
+          <Modal htmlArr={this.state.htmlArr} closeModalBtnClicked={this.closeCodeModal}>
+            <CssCodes element='.FlexContainer' cssArr={cssParentArr} />
+            <CssCodes element='.FlexContainer div' cssArr={childrenArr} />
+          </Modal> :
+          null
+        }
         <div className='AppInfo'>
             <h1 className='AppTitle'>{ AppTitle }</h1>
             <p>Built by <a className='creator' href='https://twitter.com/iamdillion' title='Creator'>{ Creator }</a></p>
@@ -169,6 +222,8 @@ class App extends React.Component {
           changeJustifyContent = {this.changeJustifyContent}
           changeAlignItems = {this.changeAlignItems}
           changeAlignContent = {this.changeAlignContent}
+
+          genCodeBtnclicked={this.showCodeModal}
         />
       </main>
     )

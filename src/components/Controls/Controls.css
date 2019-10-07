@@ -7,7 +7,7 @@
   flex-flow: wrap;
   justify-content: space-evenly;
   color: white;
-  height: 80vh;
+  min-height: 80vh;
   border: 1px solid white;
   margin: 0 0 30px;
 }
@@ -16,7 +16,6 @@
 }
 .Controls label {
   font-size: 15px;
-  letter-spacing: 1px;
   display:block;
 }
 .AddDivBtn, .Controls input, .Controls select {
@@ -52,7 +51,7 @@
   background-color: green;
 }
 
-@media only screen and (max-width: 550px) {
+@media only screen and (max-width: 900px) {
   .Controls {
     width: 90%;
   }
