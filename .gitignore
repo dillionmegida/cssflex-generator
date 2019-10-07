@@ -9,6 +9,10 @@
 # production
 /build
 
+# testing files
+/src/components/GeneratedCodes/index.html
+/src/components/GeneratedCodes/styles.css
+
 # misc
 .DS_Store
 .env.local
