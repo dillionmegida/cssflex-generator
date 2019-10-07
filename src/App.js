@@ -52,6 +52,7 @@ class App extends React.Component {
     })
   }
 
+  // delete divs
   delDiv = () => {
     let initialN = this.state.nDivs;
     if (initialN > 1) {
