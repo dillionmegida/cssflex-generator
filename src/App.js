@@ -7,58 +7,48 @@ import Controls from './components/Controls/Control';
 import Modal, { CssCodes } from './components/GeneratedCodes/GeneratedCodes';
 
 
-// Sample Div used to illustrate children
-const SampleDiv = props => (
-  <div style={{backgroundColor: 'lightblue', margin: props.margin, height: props.divsHeight, width: props.divsWidth}}>
-          
-  </div>
-);
-
-// Function for repeating components
-const repeatComp = (comp, number) => {
-  let CompArr = [];
-  for(let count = 1; count <= number; count++) {
-    CompArr.push(comp);
-  }
-  // console.log(ComDisplay);
-  return CompArr.map((comp, index) => (
-    <React.Fragment key={index}>
-      { comp }
-    </React.Fragment>
-  ))
-}
-
 class App extends React.Component {
+  constructor(props) {
+    super(props);
+    this.repeatComp = this.repeatComp.bind(this);
 
-  state = {
-    //Number of Divs
-    nDivs: 3,
-    // Handling the state of the styles
-    divsWidth: '100px',
-    divsHeight: '100px',
-    divsMargin: '5px',
-    flexWrap: 'nowrap',
-    flexDirection: 'row',
-    justifyContent: 'flex-start',
-    alignItems: 'flex-start',
-    alignContent: 'flex-start',
-
-    htmlArr: [
-      '<div></div>',
-			'<div></div>',
-			'<div></div>'
-    ],
-
-    codeModal: false
+    this.state = {
+      //Number of Divs
+      nDivs: [{
+        divWidth: 100,
+        divHeight: 100,
+        divMargin: 5,
+      }],
+      selectedDiv: null,
+      // Handling the state of the styles
+      flexWrap: 'nowrap',
+      flexDirection: 'row',
+      justifyContent: 'flex-start',
+      alignItems: 'flex-start',
+      alignContent: 'flex-start',
+  
+      htmlArr: [
+        '<div></div>',
+        '<div></div>',
+        '<div></div>'
+      ],
+  
+      codeModal: false
+    }
   }
-   //Adding More Divs 
 
+  //Adding More Divs 
   addDiv = () => {
     let initialN = this.state.nDivs;
+    initialN.push({
+      divWidth: 100,
+      divHeight: 100,
+      divMargin: 5,
+    });
     let initialHtmlArr = this.state.htmlArr;
     initialHtmlArr.push('<div></div>')
     this.setState({
-      nDivs: initialN + 1,
+      nDivs: initialN,
       htmlArr: initialHtmlArr
     })
   }
@@ -66,11 +56,12 @@ class App extends React.Component {
   // delete divs
   delDiv = () => {
     let initialN = this.state.nDivs;
+    initialN.pop();
     let initialHtmlArr = this.state.htmlArr;
-    if (initialN > 1) {
+    if (initialN.length > 0) {
       initialHtmlArr.pop();
       this.setState({
-        nDivs: initialN - 1,
+        nDivs: initialN,
         htmlArr: initialHtmlArr
       });
     }
@@ -79,26 +70,30 @@ class App extends React.Component {
   // Functions that get user inputs and change state
 
   changeDivsWidth = event => {
-    let currentValue = event.target.value;
+    let currentValue = parseInt(event.target.value, 10);
+    const divArr = this.state.nDivs;
+    divArr[this.state.selectedDiv].divWidth = currentValue;
     this.setState({
-      divsWidth: currentValue + 'px'
+      nDivs: divArr
     })
   }
 
   changeDivsHeight = event => {
-    let currentValue = event.target.value;
-    // console.log(currentValue);
+    let currentValue = parseInt(event.target.value, 10);
+    const divArr = this.state.nDivs;
+    divArr[this.state.selectedDiv].divHeight = currentValue;
     this.setState({
-      divsHeight: currentValue + 'px'
+      nDivs: divArr
     })
   }
 
   // Change Margin
   changeDivsMargin = event => {
-    let currentValue = event.target.value;
-    // console.log(currentValue);
+    let currentValue = parseInt(event.target.value, 10);
+    const divArr = this.state.nDivs;
+    divArr[this.state.selectedDiv].divMargin = currentValue;
     this.setState({
-      divsMargin: currentValue + 'px'
+      nDivs: divArr
     })
   } 
 
@@ -149,8 +144,23 @@ class App extends React.Component {
     })
   }
 
-  render() {
+  onDivSelect(index) {
+    if (this.state.selectedDiv === index) {
+      this.setState({selectedDiv: null});
+    } else {
+      this.setState({selectedDiv: index});
+    }
+  }
 
+  repeatComp(divArr) {
+    let renderDivs = [];
+    for (let i = 0; i < divArr.length; i++) {
+      renderDivs.push(<div className={this.state.selectedDiv === i ? "selectedDiv" : undefined} onClick={this.onDivSelect.bind(this, i)} key={i + "renderedDiv"} style={{backgroundColor: 'lightblue', width: this.state.nDivs[i].divWidth, height: this.state.nDivs[i].divHeight, margin: this.state.nDivs[i].divMargin}} />);
+    }
+    return renderDivs;
+  }
+
+  render() {
     const cssParentArr = [
       'display: flex',
       `flex-wrap: ${this.state.flexWrap}`,
@@ -197,22 +207,15 @@ class App extends React.Component {
             alignContent: this.state.alignContent
           }}
         >
-
-          {
-            repeatComp(
-               <SampleDiv divsHeight={this.state.divsHeight} divsWidth={this.state.divsWidth} margin={this.state.divsMargin} />,
-               this.state.nDivs
-            )
-          }
-
+          {this.repeatComp(this.state.nDivs)}
         </section>
         <Controls
           addDiv = {this.addDiv}
           delDiv = {this.delDiv}
           
-          DivsHeight = {this.state.divsHeight.slice(0, -2)}
-          DivsWidth = {this.state.divsWidth.slice(0, -2)}
-          DivsMargin = {this.state.divsMargin.slice(0, -2)}
+          DivsHeight = {this.state.selectedDiv !== null ? this.state.nDivs[this.state.selectedDiv].divHeight : 0}
+          DivsWidth = {this.state.selectedDiv !== null ? this.state.nDivs[this.state.selectedDiv].divWidth : 0}
+          DivsMargin = {this.state.selectedDiv !== null ? this.state.nDivs[this.state.selectedDiv].divMargin : 0}
 
           changeDivsWidth = {this.changeDivsWidth}
           changeDivsHeight = {this.changeDivsHeight}
