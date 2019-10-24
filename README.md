@@ -47,5 +47,5 @@ Make this repository an upstream for easy syncing and follow up.
 ### Author
 [Dillion Megida](https://dillionmegida.com)
 
-### Licence
+### License
 MIT
