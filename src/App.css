@@ -33,6 +33,10 @@
   overflow: auto;
 }
 
+.selectedDiv {
+  border: 1px solid red;
+}
+
 /* .FlexContainer > div {
   background-color: #dec58e;
   margin: 10px;
